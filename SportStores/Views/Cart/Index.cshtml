@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CartIndexViewModel
+
+<link rel="stylesheet"
+      asp-href-include="/lib/bootstrap/"
+      asp-href-exclude="**/*-reboot*,**/*-grid*" />
+<link rel="stylesheet" asp-href-include="/lib/fontawesome/css/*.css" />
+<link rel="stylesheet" asp-href-include="/assets/css/*.css" />
+@*SHARED/HOME/WELCOME-------------------------------------------------------------*@
+@Html.Partial("Home/HomeWelcome")
+
+<h2>Your cart</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Item</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.Lines)
+        {
+            <tr>
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-left">@line.Product.Name</td>
+                <td class="text-right">@line.Product.Price.ToString("c")</td>
+                <td class="text-right">
+                    @((line.Quantity * line.Product.Price).ToString("c"))
+                </td>
+                <td>
+                    <form asp-action="RemoveFromCart" method="post">
+                        <input type="hidden" name="ProductID"
+                               value="@line.Product.ProductID" />
+                        <input type="hidden" name="returnUrl"
+                               value="@Model.ReturnUrl" />
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Remove
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">
+                @Model.Cart.ComputeTotalValue().ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a>
+    <a class="btn btn-primary" asp-action="Checkout" asp-controller="Order">
+        Checkout
+    </a>
+</div>
+
+<script src="assets/js/jquery-2.1.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- Plugins -->
+<script src="assets/js/owl-carousel.js"></script>
+<script src="assets/js/scrollreveal.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+<script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/imgfix.min.js"></script>
+
+<!-- Global Init -->
+<script src="assets/js/custom.js"></script>
+

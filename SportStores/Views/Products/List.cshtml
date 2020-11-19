@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ProductsListViewModel
+
+<link rel="stylesheet"
+      asp-href-include="/lib/bootstrap/"
+      asp-href-exclude="**/*-reboot*,**/*-grid*" />
+<link rel="stylesheet" asp-href-include="/lib/fontawesome/css/*.css" />
+<link rel="stylesheet" asp-href-include="/assets/css/*.css" />
+
+@*SHARED/HOME/WELCOME-------------------------------------------------------------*@
+@Html.Partial("Home/HomeWelcome")
+<div class="col-12 product-wrap" style="margin-top:100px">
+    <div class="row">
+        <div class="col-12">
+            <div class="all-product" style="display: flex; flex-wrap: wrap;">
+                @foreach (var p in Model.Products)
+                {
+                    @Html.Partial("ProductSummary", p)
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            @Html.Partial("Home/Pagination")
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/jquery-2.1.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- Plugins -->
+<script src="assets/js/owl-carousel.js"></script>
+<script src="assets/js/scrollreveal.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+<script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/imgfix.min.js"></script>
+
+<!-- Global Init -->
+<script src="assets/js/custom.js"></script>
+
+
+
+
+
+

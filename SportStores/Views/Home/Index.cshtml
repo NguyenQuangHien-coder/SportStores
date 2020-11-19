@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet"
+      asp-href-include="/lib/bootstrap/"
+      asp-href-exclude="**/*-reboot*,**/*-grid*" />
+<link rel="stylesheet" asp-href-include="/lib/fontawesome/css/*.css" />
+<link rel="stylesheet" asp-href-include="/assets/css/*.css" />
+
+@*SHARED/HOME/WELCOME-------------------------------------------------------------*@
+@Html.Partial("Home/HomeWelcome")
+
+@*@Html.Partial("Home/TestUI")*@
+
+@*SHARED/HOME/ABOUT--------------------------------------------------------------*@
+@Html.Partial("Home/About")
+
+@*SHARED/HOME/HOMECAROUSEL-------------------------------------------------------*@
+@Html.Partial("Home/HomeCarousel")
+
+
+<h1>HELLOOOO</h1>
+
+
+<script src="assets/js/jquery-2.1.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- Plugins -->
+<script src="assets/js/owl-carousel.js"></script>
+<script src="assets/js/scrollreveal.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+<script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/imgfix.min.js"></script>
+
+<!-- Global Init -->
+<script src="assets/js/custom.js"></script>
+
